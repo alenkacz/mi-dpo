@@ -32,8 +32,10 @@ public class Main {
 	private static ITraversalAlgorithm chooseAlgorithm(String alg) {
 		if(alg.equals("dfs")) {
 			return new DFS();
-		} else {
+		} else if(alg.equals("bfs")) {
 			return new BFS();
+		} else {
+			throw new UnsupportedOperationException("Run program with dfs OR bfs parameter");
 		}
 	}
 	
