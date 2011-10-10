@@ -1,16 +1,47 @@
 package strategy;
 
+import strategy.tree.BFS;
+import strategy.tree.DFS;
+import strategy.tree.TreeTraversal;
+import strategy.tree.ITraversalAlgorithm;
+
 public class Main {
-	public int main(String[] args) {
+	public static void main(String[] args){
 		int height = 5;
-		int neighbors = 3;
+		int neighbors = 2;
+		
+		String algorithm = "bfs";
 		
 		TreeGenerator generator = new TreeGenerator();
 		Node root = generator.generateTree(height, neighbors);
 		
-		GraphTraversal gt = new GraphTraversal(new DFS());
+		TreeTraversal gt = new TreeTraversal(chooseAlgorithm(algorithm));
 		gt.doTraversing(root);
 		
-		return 1;
+		System.out.println(root.getNumber());
+		printTree(root);
+	}
+	
+	private static ITraversalAlgorithm chooseAlgorithm(String alg) {
+		if(alg.equals("dfs")) {
+			return new DFS();
+		} else {
+			return new BFS();
+		}
+	}
+	
+	private static void printTree(Node node) {
+		for( Node n : node.getSuccessors() ) {
+			System.out.print(n.getNumber());
+			System.out.print(" ");
+		}
+		
+		System.out.print("\n");
+		for( Node n : node.getSuccessors() ) {
+			for( Node n2 : n.getSuccessors() ) {
+				System.out.print(n2.getNumber());
+				System.out.print(" ");
+			}
+		}
 	}
 }
