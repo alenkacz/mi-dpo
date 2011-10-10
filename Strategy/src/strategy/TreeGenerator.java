@@ -5,15 +5,15 @@ import java.util.Random;
 import java.util.Set;
 
 public class TreeGenerator {
-	public Node generateTree(int number, int neighbors) {
+	public Node generateTree() {
 		Node root = new Node();
 		
-		for( int i = 0; i < number; i++ ) {
-			root.setSuccessors(generateRow(neighbors));
+		for( int i = 0; i < 2; i++ ) {
+			root.setSuccessors(generateRow(2));
 		}
 		
 		for( Node n : root.getSuccessors() ) {
-			n.setSuccessors(generateRow(neighbors));
+			n.setSuccessors(generateRow(2));
 		}
 		
 		return root;

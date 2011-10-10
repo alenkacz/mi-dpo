@@ -6,20 +6,27 @@ import strategy.tree.TreeTraversal;
 import strategy.tree.ITraversalAlgorithm;
 
 public class Main {
+
+
 	public static void main(String[] args){
-		int height = 5;
-		int neighbors = 2;
-		
-		String algorithm = "bfs";
+		String algorithm = "";
+		if( args.length != 1 ) {
+			printUsage();
+		} else {
+			algorithm = args[0];
+		}
 		
 		TreeGenerator generator = new TreeGenerator();
-		Node root = generator.generateTree(height, neighbors);
+		Node root = generator.generateTree();
 		
 		TreeTraversal gt = new TreeTraversal(chooseAlgorithm(algorithm));
 		gt.doTraversing(root);
 		
-		System.out.println(root.getNumber());
 		printTree(root);
+	}
+	
+	private static void printUsage() {
+		System.out.println("Need only one argument - dfs or bfs");
 	}
 	
 	private static ITraversalAlgorithm chooseAlgorithm(String alg) {
@@ -31,6 +38,8 @@ public class Main {
 	}
 	
 	private static void printTree(Node node) {
+		System.out.println(node.getNumber());
+		
 		for( Node n : node.getSuccessors() ) {
 			System.out.print(n.getNumber());
 			System.out.print(" ");
@@ -43,5 +52,6 @@ public class Main {
 				System.out.print(" ");
 			}
 		}
+		System.out.print("\n");
 	}
 }
