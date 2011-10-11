@@ -1,19 +1,36 @@
-package strategy.tree;
+package strategy.traversal;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
-import strategy.Node;
+import strategy.tree.Node;
 
-public class BFS implements ITraversalAlgorithm {
+/**
+ * Concrete strategy
+ * @author alenka
+ *
+ */
+public class BFS implements ITraversalStorage {
 
-	int counter;
-	
-	public BFS() {
-		counter = 0;
+	Queue<Node> storage = new LinkedList<Node>();
+
+	@Override
+	public void add(Node node) {
+		storage.add(node);
+	}
+
+	@Override
+	public Node get() {
+		return storage.remove();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return storage.isEmpty();
 	}
 	
-	@Override
+	/*@Override
 	public void traverse(Node root) {
 		Queue<Node> q = new LinkedList<Node>();
 		q.add(root);
@@ -31,6 +48,6 @@ public class BFS implements ITraversalAlgorithm {
 				q.add(child);
 			}
 		}
-	}
+	}*/
 
 }

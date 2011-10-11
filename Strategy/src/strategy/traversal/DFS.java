@@ -1,18 +1,36 @@
-package strategy.tree;
+package strategy.traversal;
 
 import java.util.Stack;
 
-import strategy.Node;
+import strategy.tree.Node;
 
-public class DFS implements ITraversalAlgorithm {
+/**
+ * Concrete strategy
+ * @author alenka
+ *
+ */
+public class DFS implements ITraversalStorage {
 
-	private int counter;
-	
-	public DFS() {
-		counter = 0;
+	Stack<Node> storage = new Stack<Node>();
+
+	@Override
+	public void add(Node node) {
+		storage.push(node);
+	}
+
+	@Override
+	public Node get() {
+		return storage.pop();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return storage.isEmpty();
 	}
 	
-	@Override
+	
+	
+	/*@Override
 	public void traverse(Node root) {
 		Stack<Node> s = new Stack<Node>();
 		s.push(root);
@@ -34,6 +52,6 @@ public class DFS implements ITraversalAlgorithm {
 				s.pop();
 			}
 		}
-	}
+	}*/
 
 }

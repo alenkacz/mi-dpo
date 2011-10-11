@@ -1,4 +1,5 @@
-package strategy;
+package strategy.tree;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -9,8 +10,16 @@ public class Node {
 	private Node parent;
 	
 	public Node() {
-		explored = false;
-		number = 0;
+		successors = new HashSet<Node>();
+	}
+	
+	public Node(int number) {
+		successors = new HashSet<Node>();
+		this.number = number;
+	}
+	
+	public void addSuccessor( Node n ) {
+		successors.add(n);
 	}
 
 	public boolean isExplored() {

@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import strategy.tree.Node;
+
 public class TreeGenerator {
 	public Node generateTree() {
 		Node root = new Node();
