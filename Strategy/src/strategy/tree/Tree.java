@@ -22,16 +22,22 @@ public class Tree {
 	}
 	
 	private void generate() {
-		generateSiblings(height, root, 1);
+		generateSiblings(height-1, root, 1);
 	}
 	
 	private void generateSiblings(int height, Node node, int counter) {
 		if( height == 0 ) return;
 		
 		for( int i = 0; i < siblings; i++ ) {
-			Node n = new Node(counter++);
+			Node n = new Node(counter);
 			node.addSuccessor(n);
-			generateSiblings(height-1, n, counter);
+			generateSiblings(height-1, n, counter+getCounterIncrement(height, counter));
+			counter++;
 		}
+	}
+	
+	private int getCounterIncrement(int height, int counter) {
+		int heightDiff = this.height-height;
+		return ((heightDiff*siblings)+(counter-(heightDiff-1)*2-1));
 	}
 }

@@ -8,7 +8,9 @@ import strategy.tree.Node;
  *
  */
 public interface ITraversalStorage {
-	public void add(Node root);
+	public Node next();
+	public boolean hasNext();
+	/*public void add(Node root);
 	public Node get();
-	public boolean isEmpty();
+	public boolean isEmpty();*/
 }

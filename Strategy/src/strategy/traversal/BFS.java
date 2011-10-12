@@ -1,10 +1,12 @@
 package strategy.traversal;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
 import strategy.tree.Node;
+import strategy.tree.Tree;
 
 /**
  * Concrete strategy
@@ -15,39 +17,26 @@ public class BFS implements ITraversalStorage {
 
 	Queue<Node> storage = new LinkedList<Node>();
 
-	@Override
-	public void add(Node node) {
-		storage.add(node);
-	}
-
-	@Override
-	public Node get() {
-		return storage.remove();
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return storage.isEmpty();
+	public BFS(Tree tree) {
+		storage.add(tree.getRoot());
 	}
 	
-	/*@Override
-	public void traverse(Node root) {
-		Queue<Node> q = new LinkedList<Node>();
-		q.add(root);
-		root.setExplored(true);
-		root.setNumber(counter++);
+	@Override
+	public Node next() {
+		Node n = storage.remove();
 		
-		while(!q.isEmpty())
-		{
-			Node n = (Node) q.remove();
-			Node child = null;
-			while((child=n.getUnivisitedChildNode())!=null)
-			{
-				child.setExplored(true);
-				child.setNumber(counter++);
-				q.add(child);
+		for(Node node : n.getSuccessors()) {
+			if(!node.isExplored()) {
+				storage.add(node);
+				node.setExplored(true);
 			}
 		}
-	}*/
+		
+		return n;
+	}
 
+	@Override
+	public boolean hasNext() {
+		return !storage.isEmpty();
+	}	
 }

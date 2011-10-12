@@ -8,7 +8,7 @@ import strategy.tree.Tree;
 
 public class Main {
 
-	private final static int height = 4;
+	private final static int height = 5;
 	private final static int siblings = 2;
 
 	public static void main(String[] args){
@@ -21,7 +21,7 @@ public class Main {
 		
 		Tree tree = new Tree(height, siblings);
 		
-		TreeTraversal gt = new TreeTraversal(selectAlgorithm(algorithm));
+		TreeTraversal gt = new TreeTraversal(selectAlgorithm(algorithm, tree));
 		gt.traverse(tree);
 	}
 	
@@ -29,11 +29,11 @@ public class Main {
 		System.out.println("Need only one argument - dfs or bfs");
 	}
 	
-	private static ITraversalStorage selectAlgorithm(String alg) {
+	private static ITraversalStorage selectAlgorithm(String alg, Tree tree) {
 		if(alg.equals("dfs")) {
-			return new DFS();
+			return new DFS(tree);
 		} else if(alg.equals("bfs")) {
-			return new BFS();
+			return new BFS(tree);
 		} else {
 			throw new UnsupportedOperationException("Run program with dfs OR bfs parameter");
 		}

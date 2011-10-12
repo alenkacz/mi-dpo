@@ -19,7 +19,10 @@ public class TreeTraversal {
 	}
 	
 	public void traverse(Tree t) {
-		Node root = t.getRoot();
+		while( storage.hasNext() ) {
+			System.out.print(storage.next().getNumber() + " ");
+		}
+		/*Node root = t.getRoot();
 		storage.add(root);
 		root.setExplored(true);
 		System.out.print(root.getNumber() + " ");
@@ -34,6 +37,6 @@ public class TreeTraversal {
 				System.out.print(child.getNumber() + " ");
 				storage.add(child);
 			}
-		}
+		}*/
 	}
 }

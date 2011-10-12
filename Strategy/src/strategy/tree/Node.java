@@ -1,20 +1,22 @@
 package strategy.tree;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 public class Node {
 	private int number;
 	private boolean explored;
-	private Set<Node> successors;
+	private List<Node> successors;
 	private Node parent;
 	
 	public Node() {
-		successors = new HashSet<Node>();
+		successors = new ArrayList<Node>();
 	}
 	
 	public Node(int number) {
-		successors = new HashSet<Node>();
+		successors = new ArrayList<Node>();
 		this.number = number;
 	}
 	
@@ -30,11 +32,11 @@ public class Node {
 		this.explored = explored;
 	}
 
-	public Set<Node> getSuccessors() {
+	public List<Node> getSuccessors() {
 		return successors;
 	}
 
-	public void setSuccessors(Set<Node> successors) {
+	public void setSuccessors(List<Node> successors) {
 		this.successors = successors;
 	}
 
@@ -54,16 +56,16 @@ public class Node {
 		this.number = number;
 	}
 	
-	public Node getUnivisitedChildNode() {
+	public boolean hasUnivisitedChildNode() {
 		if( successors != null ) {
 			for( Node n : successors ) {
 				if( !n.isExplored() ) {
-					return n;
+					return true;
 				}
 			}
 		}
 		
-		return null;
+		return false;
 	}
 	
 }
