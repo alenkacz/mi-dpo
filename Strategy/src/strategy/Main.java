@@ -8,7 +8,7 @@ import strategy.tree.Tree;
 
 public class Main {
 
-	private final static int height = 5;
+	private final static int height = 4;
 	private final static int siblings = 2;
 
 	public static void main(String[] args){

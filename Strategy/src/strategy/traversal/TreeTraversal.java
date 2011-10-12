@@ -22,21 +22,5 @@ public class TreeTraversal {
 		while( storage.hasNext() ) {
 			System.out.print(storage.next().getNumber() + " ");
 		}
-		/*Node root = t.getRoot();
-		storage.add(root);
-		root.setExplored(true);
-		System.out.print(root.getNumber() + " ");
-		
-		while(!storage.isEmpty())
-		{
-			Node n = (Node) storage.get();
-			Node child = n.getUnivisitedChildNode();
-			if(child != null)
-			{
-				child.setExplored(true);
-				System.out.print(child.getNumber() + " ");
-				storage.add(child);
-			}
-		}*/
 	}
 }

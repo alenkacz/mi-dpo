@@ -56,16 +56,16 @@ public class Node {
 		this.number = number;
 	}
 	
-	public boolean hasUnivisitedChildNode() {
+	public Node getUnivisitedChildNode() {
 		if( successors != null ) {
 			for( Node n : successors ) {
 				if( !n.isExplored() ) {
-					return true;
+					return n;
 				}
 			}
 		}
 		
-		return false;
+		return null;
 	}
 	
 }
