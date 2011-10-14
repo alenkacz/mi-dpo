@@ -17,15 +17,18 @@ public class Main {
 			printUsage();
 		} else {
 			algorithm = args[0];
-			if( algorithm == null ) {
-				System.exit(1);
-			}
 		}
 		
 		Tree tree = new Tree(height, siblings);
 		
-		TreeTraversal gt = new TreeTraversal(selectAlgorithm(algorithm, tree));
-		gt.traverse(tree);
+		ITraversalIterator algo = selectAlgorithm(algorithm, tree);
+		
+		if( algo == null ) {
+			System.exit(1);
+		}
+		
+		TreeTraversal traversal = new TreeTraversal(algo);
+		traversal.traverse(tree);
 	}
 	
 	private static void printUsage() {
