@@ -13,7 +13,7 @@ import strategy.tree.Tree;
  * @author alenka
  *
  */
-public class BFS implements ITraversalStorage {
+public class BFS implements ITraversalIterator {
 
 	Queue<Node> storage = new LinkedList<Node>();
 

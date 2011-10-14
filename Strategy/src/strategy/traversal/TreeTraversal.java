@@ -11,10 +11,10 @@ import strategy.tree.Tree;
  *
  */
 public class TreeTraversal {
-	private ITraversalStorage storage;
+	private ITraversalIterator storage;
 	private int counter;
 	
-	public TreeTraversal( ITraversalStorage storage ) {
+	public TreeTraversal( ITraversalIterator storage ) {
 		this.storage = storage;
 	}
 	

@@ -7,7 +7,7 @@ import strategy.tree.Node;
  * @author alenka
  *
  */
-public interface ITraversalStorage {
+public interface ITraversalIterator {
 	public Node next();
 	public boolean hasNext();
 }

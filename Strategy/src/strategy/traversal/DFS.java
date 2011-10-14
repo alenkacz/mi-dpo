@@ -11,7 +11,7 @@ import strategy.tree.Tree;
  * @author alenka
  *
  */
-public class DFS implements ITraversalStorage {
+public class DFS implements ITraversalIterator {
 
 	Stack<Node> storage = new Stack<Node>();
 	boolean first = true;
