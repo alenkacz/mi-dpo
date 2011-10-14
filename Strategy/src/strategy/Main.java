@@ -15,6 +15,7 @@ public class Main {
 		String algorithm = null;
 		if( args.length != 1 ) {
 			printUsage();
+			System.exit(1);
 		} else {
 			algorithm = args[0];
 		}
