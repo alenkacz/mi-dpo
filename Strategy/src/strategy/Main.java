@@ -17,6 +17,9 @@ public class Main {
 			printUsage();
 		} else {
 			algorithm = args[0];
+			if( algorithm == null ) {
+				System.exit(1);
+			}
 		}
 		
 		Tree tree = new Tree(height, siblings);
@@ -36,8 +39,6 @@ public class Main {
 			return new BFS(tree);
 		} else {
 			System.out.println("Run program with dfs OR bfs parameter");
-			System.exit(1);
-			
 			return null;
 		}
 	}
