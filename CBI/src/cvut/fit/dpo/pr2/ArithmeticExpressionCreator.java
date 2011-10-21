@@ -1,5 +1,7 @@
 package cvut.fit.dpo.pr2;
 
+import java.util.Stack;
+
 import cvut.fit.dpo.arithmetic.AddOperator;
 import cvut.fit.dpo.arithmetic.ArithmeticExpression;
 import cvut.fit.dpo.arithmetic.BinaryOperator;
@@ -68,7 +70,40 @@ public class ArithmeticExpressionCreator
 	 */
 	public ArithmeticExpression createExpressionFromRPN(String input)
 	{
+		if( input == null || input.length() == 0 ) {
+			throw new IllegalArgumentException();
+		}
+		String[] parts = input.split(" ");
+		Stack<Object> tree = new Stack<Object>();
+		BinaryOperator root = null;
+		ArithmeticExpression result = new ArithmeticExpression();
+		
+		for(String part : parts) {
+			if( part.matches("[1234567890]+")) {
+				tree.push(new NumericOperand(Integer.parseInt(part)));
+			} else {
+				Object n2 = tree.pop();
+				Object n1 = tree.pop();
+				BinaryOperator operator;
+				
+				if( part.equals("+") ) {
+					operator = new AddOperator(n1, n2);
+				} else if( part.equals("-") ) {
+					operator = new SubstractOperator(n1,n2);
+				} else {
+					throw new IllegalArgumentException("Unknown operand");
+				}
+				
+				tree.push(operator);
+				root = operator;
+			}
+		}
+		
+		result.setRoot(root);
+		
+		return result;
+		
 		// Good entry point for Builder :)
-		throw new UnsupportedOperationException("Don't know how to do it :(");
+		//throw new UnsupportedOperationException("Don't know how to do it :(");
 	}
 }
