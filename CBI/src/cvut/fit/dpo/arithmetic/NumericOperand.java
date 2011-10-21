@@ -1,5 +1,6 @@
 package cvut.fit.dpo.arithmetic;
 
+import cvut.fit.dpo.arithmetic.component.IComponent;
 import cvut.fit.dpo.arithmetic.iterator.InOrderIterator;
 import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
 
@@ -8,7 +9,7 @@ import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
  * 
  * @author Jan Kurš
  */
-public class NumericOperand {
+public class NumericOperand implements IComponent {
 	private Integer value;
 	
 	public NumericOperand(Integer value)
@@ -16,7 +17,7 @@ public class NumericOperand {
 		setValue(value);
 	}
 	
-	public Integer getValue()
+	public Integer evaluate()
 	{
 		return value;
 	}
