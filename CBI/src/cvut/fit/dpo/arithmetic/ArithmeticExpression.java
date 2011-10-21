@@ -36,7 +36,7 @@ public class ArithmeticExpression
 	 */
 	public Iterator<ExpressionElement> getInOrderIterator()
 	{
-		throw new UnsupportedOperationException("Not yet implemented...");
+		return root.inOrderIterator();
 	}
 
 	/**

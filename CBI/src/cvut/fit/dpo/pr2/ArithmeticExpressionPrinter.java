@@ -1,10 +1,14 @@
 package cvut.fit.dpo.pr2;
 
+import java.util.Iterator;
+
 import cvut.fit.dpo.arithmetic.AddOperator;
 import cvut.fit.dpo.arithmetic.ArithmeticExpression;
 import cvut.fit.dpo.arithmetic.BinaryOperator;
 import cvut.fit.dpo.arithmetic.NumericOperand;
 import cvut.fit.dpo.arithmetic.SubstractOperator;
+import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
+import cvut.fit.dpo.arithmetic.iterator.InOrderIterator;
 
 /**
  * Printer for {@link ArithmeticExpression}s. It can print
@@ -43,6 +47,13 @@ public class ArithmeticExpressionPrinter
 	 */
 	public String printInOrder()
 	{
+		StringBuilder result = new StringBuilder();
+		Iterator<ExpressionElement> iterator = expression.getInOrderIterator();
+		while(iterator.hasNext()) {
+			result.append(iterator.next().stringValue());
+		}
+		
+		return result.toString();
 		// Remember, do not use the getRoot() method!
 		// The iterator may help :)
 		//BinaryOperator root = expression.getRoot();
@@ -52,7 +63,7 @@ public class ArithmeticExpressionPrinter
 		//String rString = printInOrder(root.getSecondOperand());
 
 		//return "(" + lString + operator + rString + ")";
-		return null;
+		//return null;
 	}
 
 	private String printInOrder(Object o)

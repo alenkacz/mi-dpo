@@ -1,8 +1,10 @@
 package cvut.fit.dpo.arithmetic;
 
 import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
 import cvut.fit.dpo.arithmetic.iterator.InOrderIterator;
 import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
+import cvut.fit.dpo.arithmetic.elements.Number;
 
 /**
  * Represents number in the arithmetic expression
@@ -11,9 +13,11 @@ import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
  */
 public class NumericOperand implements IComponent {
 	private Integer value;
+	private ExpressionElement element;
 	
 	public NumericOperand(Integer value)
 	{
+		element = new Number(value);
 		setValue(value);
 	}
 	
@@ -29,7 +33,7 @@ public class NumericOperand implements IComponent {
 	
 	public InOrderIterator inOrderIterator()
 	{
-		return null;
+		return new InOrderIterator(element);
 	}
 
 	public PostOrderIterator postOrderIterator()
