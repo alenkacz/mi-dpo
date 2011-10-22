@@ -1,6 +1,6 @@
 package cvut.fit.dpo.arithmetic;
 
-import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.component.Component;
 
 /**
  * Represents + operation
@@ -11,7 +11,7 @@ import cvut.fit.dpo.arithmetic.component.IComponent;
 public class AddOperator extends BinaryOperator
 {
 
-	public AddOperator(IComponent firstOperand, IComponent secondOperand)
+	public AddOperator(Component firstOperand, Component secondOperand)
 	{
 		super(firstOperand, secondOperand);
 	}

@@ -7,7 +7,7 @@ import cvut.fit.dpo.arithmetic.ArithmeticExpression;
 import cvut.fit.dpo.arithmetic.BinaryOperator;
 import cvut.fit.dpo.arithmetic.NumericOperand;
 import cvut.fit.dpo.arithmetic.SubstractOperator;
-import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.component.Component;
 
 
 /**
@@ -75,17 +75,17 @@ public class ArithmeticExpressionCreator
 			throw new IllegalArgumentException();
 		}
 		String[] parts = input.split(" ");
-		Stack<IComponent> tree = new Stack<IComponent>();
-		IComponent root = null;
+		Stack<Component> tree = new Stack<Component>();
+		Component root = null;
 		ArithmeticExpression result = new ArithmeticExpression();
 		
 		for(String part : parts) {
 			if( part.matches("[1234567890]+")) {
 				tree.push(new NumericOperand(Integer.parseInt(part)));
 			} else {
-				IComponent n2 = tree.pop();
-				IComponent n1 = tree.pop();
-				IComponent operator;
+				Component n2 = tree.pop();
+				Component n1 = tree.pop();
+				Component operator;
 				
 				if( part.equals("+") ) {
 					operator = new AddOperator(n1, n2);

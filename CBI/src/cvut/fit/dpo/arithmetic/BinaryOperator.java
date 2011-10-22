@@ -1,6 +1,6 @@
 package cvut.fit.dpo.arithmetic;
 
-import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.component.Component;
 import cvut.fit.dpo.arithmetic.iterator.InOrderIterator;
 import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
 
@@ -10,24 +10,24 @@ import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
  * @author Jan Kurš
  *
  */
-public abstract class BinaryOperator implements IComponent
+public abstract class BinaryOperator extends Component
 {
-	private IComponent firstOperand;
-	private IComponent secondOperand;
+	private Component firstOperand;
+	private Component secondOperand;
 
 	protected abstract Integer evaluate(Integer val1, Integer val2);
 	
-	public BinaryOperator(IComponent firstOperand, IComponent secondOperand)
+	public BinaryOperator(Component firstOperand, Component secondOperand)
 	{
 		setFirstOperand(firstOperand);
 		setSecondOperand(secondOperand);
 	}
 	
-	void setFirstOperand(IComponent o)
+	void setFirstOperand(Component o)
 	{
 		firstOperand = o;
 	}
-	void setSecondOperand(IComponent o)
+	void setSecondOperand(Component o)
 	{
 		secondOperand = o;
 	}

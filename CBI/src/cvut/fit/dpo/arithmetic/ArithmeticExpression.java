@@ -2,19 +2,19 @@ package cvut.fit.dpo.arithmetic;
 
 import java.util.Iterator;
 
-import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.component.Component;
 import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
 
 public class ArithmeticExpression
 {
-	private IComponent root;
+	private Component root;
 	
 	public Integer evaluate()
 	{
 		return root.evaluate();
 	}
 	
-	public void setRoot(IComponent root)
+	public void setRoot(Component root)
 	{
 		this.root = root;
 	}
@@ -24,7 +24,7 @@ public class ArithmeticExpression
 	 * 
 	 * @deprecated Do not provide access to the inner representation
 	 */
-	public IComponent getRoot()
+	public Component getRoot()
 	{
 		return root;
 	}

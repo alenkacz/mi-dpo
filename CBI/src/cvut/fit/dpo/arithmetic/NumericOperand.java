@@ -1,6 +1,6 @@
 package cvut.fit.dpo.arithmetic;
 
-import cvut.fit.dpo.arithmetic.component.IComponent;
+import cvut.fit.dpo.arithmetic.component.Component;
 import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
 import cvut.fit.dpo.arithmetic.iterator.InOrderIterator;
 import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
@@ -11,7 +11,7 @@ import cvut.fit.dpo.arithmetic.elements.Number;
  * 
  * @author Jan Kurš
  */
-public class NumericOperand implements IComponent {
+public class NumericOperand extends Component {
 	private Integer value;
 	private ExpressionElement element;
 	
