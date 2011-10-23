@@ -7,6 +7,8 @@ import cvut.fit.dpo.arithmetic.ArithmeticExpression;
 import cvut.fit.dpo.arithmetic.BinaryOperator;
 import cvut.fit.dpo.arithmetic.NumericOperand;
 import cvut.fit.dpo.arithmetic.SubstractOperator;
+import cvut.fit.dpo.arithmetic.builder.ArithmeticExpressionBuilder;
+import cvut.fit.dpo.arithmetic.builder.IExpressionBuilder;
 import cvut.fit.dpo.arithmetic.component.Component;
 
 
@@ -26,17 +28,11 @@ public class ArithmeticExpressionCreator
 	 */
 	public ArithmeticExpression createExpression1()
 	{
-		ArithmeticExpression e = new ArithmeticExpression();
+		IExpressionBuilder builder = new ArithmeticExpressionBuilder();
+		Component c1 = builder.buildAddOperator(1,2);
+		builder.buildSubstractOperator(3,c1);
 		
-		NumericOperand op1 = new NumericOperand(1);
-		NumericOperand op2 = new NumericOperand(2);
-		NumericOperand op3 = new NumericOperand(3);
-		
-		BinaryOperator o2 = new AddOperator(op1, op2);
-		BinaryOperator o1 = new SubstractOperator(op3, o2);
-		
-		e.setRoot(o1);
-		return e;
+		return builder.getExpression();
 	}
 
 	/**
