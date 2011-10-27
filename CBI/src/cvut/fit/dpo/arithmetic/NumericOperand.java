@@ -31,14 +31,19 @@ public class NumericOperand extends Component {
 		this.value = value;
 	}
 	
+	public Integer getValue()
+	{
+		return value;
+	}
+	
 	public InOrderIterator inOrderIterator()
 	{
-		return new InOrderIterator(element);
+		return new InOrderIterator(this);
 	}
 
 	public PostOrderIterator postOrderIterator()
 	{
-		return null;
+		return new PostOrderIterator(this);
 	}
 	
 }

@@ -8,6 +8,7 @@ import cvut.fit.dpo.arithmetic.BinaryOperator;
 import cvut.fit.dpo.arithmetic.NumericOperand;
 import cvut.fit.dpo.arithmetic.SubstractOperator;
 import cvut.fit.dpo.arithmetic.builder.ArithmeticExpressionBuilder;
+import cvut.fit.dpo.arithmetic.builder.ExpressionBuilderDirector;
 import cvut.fit.dpo.arithmetic.builder.IExpressionBuilder;
 import cvut.fit.dpo.arithmetic.component.Component;
 
@@ -29,8 +30,9 @@ public class ArithmeticExpressionCreator
 	public ArithmeticExpression createExpression1()
 	{
 		IExpressionBuilder builder = new ArithmeticExpressionBuilder();
-		Component c1 = builder.buildAddOperator(1,2);
-		builder.buildSubstractOperator(3,c1);
+		
+		ExpressionBuilderDirector director = new ExpressionBuilderDirector(builder);
+		director.constructExpression1();
 		
 		return builder.getExpression();
 	}
@@ -43,17 +45,12 @@ public class ArithmeticExpressionCreator
 	 */
 	public ArithmeticExpression createExpression2()
 	{
-		ArithmeticExpression e = new ArithmeticExpression();
+		IExpressionBuilder builder = new ArithmeticExpressionBuilder();
 		
-		NumericOperand op1 = new NumericOperand(1);
-		NumericOperand op2 = new NumericOperand(2);
-		NumericOperand op3 = new NumericOperand(3);
+		ExpressionBuilderDirector director = new ExpressionBuilderDirector(builder);
+		director.constructExpression2();
 		
-		BinaryOperator o1 = new SubstractOperator(op3, op1);
-		BinaryOperator o2 = new AddOperator(o1, op2);
-		
-		e.setRoot(o2);
-		return e;
+		return builder.getExpression();
 	}
 	
 	/**
@@ -67,44 +64,11 @@ public class ArithmeticExpressionCreator
 	 */
 	public ArithmeticExpression createExpressionFromRPN(String input)
 	{
-		if( input == null || input.length() == 0 ) {
-			throw new IllegalArgumentException();
-		}
-		String[] parts = input.split(" ");
-		Stack<Component> tree = new Stack<Component>();
-		Component root = null;
-		ArithmeticExpression result = new ArithmeticExpression();
+		IExpressionBuilder builder = new ArithmeticExpressionBuilder();
 		
-		for(String part : parts) {
-			if( part.matches("[1234567890]+")) {
-				tree.push(new NumericOperand(Integer.parseInt(part)));
-			} else {
-				Component n2 = tree.pop();
-				Component n1 = tree.pop();
-				Component operator;
-				
-				if( part.equals("+") ) {
-					operator = new AddOperator(n1, n2);
-				} else if( part.equals("-") ) {
-					operator = new SubstractOperator(n1,n2);
-				} else {
-					throw new IllegalArgumentException("Unknown operand");
-				}
-				
-				tree.push(operator);
-				root = operator;
-			}
-		}
+		ExpressionBuilderDirector director = new ExpressionBuilderDirector(builder);
+		director.constructFromRPN(input);
 		
-		if( root == null ) {
-			root = tree.pop();
-		}
-		
-		result.setRoot(root);
-		
-		return result;
-		
-		// Good entry point for Builder :)
-		//throw new UnsupportedOperationException("Don't know how to do it :(");
+		return builder.getExpression();
 	}
 }

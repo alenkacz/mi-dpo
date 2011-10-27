@@ -6,6 +6,8 @@ import cvut.fit.dpo.arithmetic.component.Component;
 public interface IExpressionBuilder {
 	ArithmeticExpression getExpression();
 	
+	void buildSingleOperand(int a);
+	
 	Component buildAddOperator(int a, int b);
 	Component buildAddOperator(int a, Component b);
 	Component buildAddOperator(Component a, int b);

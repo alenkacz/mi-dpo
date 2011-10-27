@@ -1,31 +1,34 @@
 package cvut.fit.dpo.arithmetic.iterator;
 
 import java.util.Iterator;
+import java.util.Stack;
 
+import cvut.fit.dpo.arithmetic.BinaryOperator;
+import cvut.fit.dpo.arithmetic.component.Component;
+import cvut.fit.dpo.arithmetic.elements.CloseBracketOperation;
 import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
+import cvut.fit.dpo.arithmetic.elements.OpenBracketOperation;
 
-public class PostOrderIterator implements Iterator<ExpressionElement>
-{
-
-	@Override
-	public boolean hasNext()
-	{
-		// TODO Auto-generated method stub
-		return false;
+public class PostOrderIterator extends BaseIterator
+{	
+	public PostOrderIterator(Component root) {
+		super(root);
 	}
-
-	@Override
-	public ExpressionElement next()
-	{
-		// TODO Auto-generated method stub
-		return null;
+	
+	protected void fillStack(Object stackItem){
+		if (root != stackItem && stackItem instanceof BinaryOperator) {
+			BinaryOperator op = (BinaryOperator) stackItem;
+			stack.push(op.postOrderIterator());
+		} else {
+			stack.push(new DummyIterator(stackItem));
+		}
 	}
-
-	@Override
-	public void remove()
-	{
-		// TODO Auto-generated method stub
+	
+	protected void initStack() {
+		BinaryOperator operator = (BinaryOperator) root;
 		
+		fillStack(operator);
+		fillStack(operator.getSecondOperand());
+		fillStack(operator.getFirstOperand());
 	}
-
 }

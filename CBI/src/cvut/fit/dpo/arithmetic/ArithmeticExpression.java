@@ -26,7 +26,7 @@ public class ArithmeticExpression
 	 */
 	public Component getRoot()
 	{
-		return root;
+		throw new UnsupportedOperationException();
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class ArithmeticExpression
 	 */
 	public Iterator<ExpressionElement> getPostOrderIterator()
 	{
-		throw new UnsupportedOperationException("Not yet implemented...");
+		return root.postOrderIterator();
 	}
 
 }

@@ -47,23 +47,16 @@ public class ArithmeticExpressionPrinter
 	 */
 	public String printInOrder()
 	{
-		StringBuilder result = new StringBuilder();
-		Iterator<ExpressionElement> iterator = expression.getInOrderIterator();
-		while(iterator.hasNext()) {
-			result.append(iterator.next().stringValue());
-		}
-		
-		return result.toString();
-		// Remember, do not use the getRoot() method!
-		// The iterator may help :)
-		//BinaryOperator root = expression.getRoot();
-		//String operator = binaryOperatorToString(root);
-
-		//String lString = printInOrder(root.getFirstOperand());
-		//String rString = printInOrder(root.getSecondOperand());
-
-		//return "(" + lString + operator + rString + ")";
-		//return null;
+		StringBuilder sb = new StringBuilder();
+	    
+	    Iterator<ExpressionElement> i = expression.getInOrderIterator();
+	    
+	    while (i.hasNext())
+	    {
+			sb.append(i.next().stringValue());
+	    }
+	    
+	    return sb.toString();
 	}
 
 	private String printInOrder(Object o)
@@ -118,6 +111,19 @@ public class ArithmeticExpressionPrinter
 	 */
 	public String printPostOrder()
 	{
+		StringBuilder sb = new StringBuilder();
+	    
+	    Iterator<ExpressionElement> i = expression.getPostOrderIterator();
+	    while (i.hasNext())
+	    {
+		sb.append(i.next().stringValue());
+		sb.append(" ");
+	    }
+	    
+	    sb.deleteCharAt(sb.length()-1);
+	    
+	    return sb.toString();
+		
 		// Remember, do not use the getRoot() method!
 		// The iterator may help :)
 		
@@ -128,7 +134,7 @@ public class ArithmeticExpressionPrinter
 		String rString = printPostOrder(root.getSecondOperand());
 
 		return lString + " " + rString + " " + operator;*/
-		return null;
+		//return null;
 	}
 
 	private String printPostOrder(Object o)

@@ -52,12 +52,12 @@ public abstract class BinaryOperator extends Component
 	
 	public InOrderIterator inOrderIterator()
 	{
-		return null;
+		return new InOrderIterator(this);
 	}
 
 	public PostOrderIterator postOrderIterator()
 	{
-		return null;
+		return new PostOrderIterator(this);
 	}
 
 	
