@@ -8,6 +8,7 @@ import cvut.fit.dpo.arithmetic.elements.Number;
 
 /**
  * Represents number in the arithmetic expression
+ * Leaf
  * 
  * @author Jan Kurš
  */

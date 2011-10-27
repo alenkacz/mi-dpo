@@ -15,6 +15,7 @@ import cvut.fit.dpo.arithmetic.component.Component;
 
 /**
  * Stupid class which can create some {@link ArithmeticExpression}s.
+ * Builder client
  * 
  * @author Jan Kurš
  *

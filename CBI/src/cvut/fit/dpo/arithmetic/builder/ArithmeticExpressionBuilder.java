@@ -6,6 +6,11 @@ import cvut.fit.dpo.arithmetic.NumericOperand;
 import cvut.fit.dpo.arithmetic.SubstractOperator;
 import cvut.fit.dpo.arithmetic.component.Component;
 
+/**
+ * Concrete builder
+ * @author alenka
+ *
+ */
 public class ArithmeticExpressionBuilder implements IExpressionBuilder {
 	ArithmeticExpression ex = new ArithmeticExpression();
 	

@@ -11,6 +11,11 @@ import cvut.fit.dpo.arithmetic.elements.CloseBracketOperation;
 import cvut.fit.dpo.arithmetic.elements.ExpressionElement;
 import cvut.fit.dpo.arithmetic.elements.OpenBracketOperation;
 
+/**
+ * Concrete iterator
+ * @author alenka
+ *
+ */
 public class InOrderIterator extends BaseIterator
 {	
 	public InOrderIterator(Component root) {

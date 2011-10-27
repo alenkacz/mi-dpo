@@ -3,6 +3,11 @@ package cvut.fit.dpo.arithmetic.builder;
 import cvut.fit.dpo.arithmetic.ArithmeticExpression;
 import cvut.fit.dpo.arithmetic.component.Component;
 
+/**
+ * Builder
+ * @author alenka
+ *
+ */
 public interface IExpressionBuilder {
 	ArithmeticExpression getExpression();
 	

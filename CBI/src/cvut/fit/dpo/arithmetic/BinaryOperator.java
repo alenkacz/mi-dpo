@@ -6,6 +6,7 @@ import cvut.fit.dpo.arithmetic.iterator.PostOrderIterator;
 
 /**
  * Represents the Binary operations like + - etc.
+ * Composite
  * 
  * @author Jan Kurš
  *
