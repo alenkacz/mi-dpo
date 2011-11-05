@@ -6,7 +6,7 @@
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="2011_pr_composite_builder_iterator">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../opt/eclipse_mi-dpo"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Applications/eclipse"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
@@ -20,12 +20,16 @@
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.launch"/>
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src-test">
                 <exclude name="**/*.launch"/>
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -60,6 +64,17 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="2011_pr_composite_builder_iterator">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cvut.fit.dpo.arithmetic.AddOperatorTest" todir="${junit.output.dir}"/>
+            <test name="cvut.fit.dpo.arithmetic.ArithmeticExpressionTest" todir="${junit.output.dir}"/>
+            <test name="cvut.fit.dpo.pr2.ArithmeticExpressionCreatorTest" todir="${junit.output.dir}"/>
+            <test name="cvut.fit.dpo.pr2.ArithmeticExpressionPrinterTest" todir="${junit.output.dir}"/>
+            <classpath refid="2011_pr_composite_builder_iterator.classpath"/>
+        </junit>
     </target>
     <target name="src-test">
         <mkdir dir="${junit.output.dir}"/>
