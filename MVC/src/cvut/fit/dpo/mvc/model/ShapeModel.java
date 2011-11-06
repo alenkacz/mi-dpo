@@ -10,10 +10,12 @@ import java.util.Observable;
  *
  */
 public class ShapeModel extends Observable {
-	Hashtable<Integer, Shape> shapes = new Hashtable<Integer, Shape>();
+	Hashtable<Integer, Shape2d> shapes = new Hashtable<Integer, Shape2d>();
 	
 	public void add(Shape2d s) {
-		
+		shapes.put(Integer.valueOf(s.getId()), s);
+		setChanged();
+		notifyObservers(s);
 	}
 	
 	public void remove(Shape2d s) {

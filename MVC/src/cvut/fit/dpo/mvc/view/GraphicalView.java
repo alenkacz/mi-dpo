@@ -1,6 +1,8 @@
 package cvut.fit.dpo.mvc.view;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,10 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import cvut.fit.dpo.mvc.controller.Controller;
+import cvut.fit.dpo.mvc.model.Circle;
+import cvut.fit.dpo.mvc.model.Square;
 
 public class GraphicalView extends View implements Observer {
-	
-	JPanel gPanel;
 	
 	public GraphicalView() {
 		initComponents();
@@ -23,20 +25,23 @@ public class GraphicalView extends View implements Observer {
 
 	@Override
 	public void initActionListeners(Controller c) {
-		gPanel.addMouseListener(c);
+		addMouseListener(c);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		if(arg instanceof Circle) {
+			Circle c = (Circle) arg;
+			getGraphics().drawOval(c.getPoint().x, c.getPoint().y, c.getX(), c.getY());
+		} else if(arg instanceof Square) {
+			Square r = (Square) arg;
+			getGraphics().drawRect(r.getPoint().x, r.getPoint().y, r.getX(), r.getY());
+		}
 	}
 
 	@Override
 	public JPanel getView() {
-		JLabel label = new JLabel("aa");
-		gPanel = new JPanel();
-		gPanel.setPreferredSize(new Dimension(100,100));
-		gPanel.add(label);
-		return gPanel;
+		setPreferredSize(new Dimension(100,100));
+		return this;
 	}
 }

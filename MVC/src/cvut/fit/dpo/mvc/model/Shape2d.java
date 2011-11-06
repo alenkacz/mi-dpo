@@ -1,11 +1,13 @@
 package cvut.fit.dpo.mvc.model;
 
 import java.awt.Point;
+import java.util.Random;
 
 import cvut.fit.dpo.mvc.exception.ShapeException;
 
 public class Shape2d {
 	private static final int DEFAULT_SIZE = 10;
+	private static Random generator = new Random( 19500427 );
 	
 	private int id;
 	private int x;
@@ -13,17 +15,23 @@ public class Shape2d {
 	private Point point;
 	
 	public Shape2d(Point p) throws ShapeException {
+		id = generateId();
 		this.point = p;
 		setX(DEFAULT_SIZE);
 		setY(DEFAULT_SIZE);
 	}
 	
 	public Shape2d(Point p, int x, int y) throws ShapeException {
+		id = generateId();
 		setX(x);
 		setY(y);
 		this.point = p;
 	}
 
+	private int generateId() {
+		return generator.nextInt();
+	}
+	
 	public int getId() {
 		return id;
 	}

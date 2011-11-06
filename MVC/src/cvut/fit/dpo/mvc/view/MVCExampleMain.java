@@ -43,11 +43,11 @@ public class MVCExampleMain extends JFrame {
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 		getContentPane().add(gView.getView());
 		getContentPane().add(tView.getView());
+		setVisible(true);
 	}
 	
 	public static void main(String[] args)
 	  {
 		MVCExampleMain main = new MVCExampleMain();
-	    main.setVisible(true);
 	  }
 }

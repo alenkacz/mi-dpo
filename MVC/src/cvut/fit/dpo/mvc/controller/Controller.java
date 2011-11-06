@@ -39,16 +39,18 @@ public class Controller implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if(command.equals(ADD_CIRCLE_COMMAND)) {
-			addCircle();
+			//addCircle();
 		}
 	}
 	
-	private void addCircle() {
-		
+	private void addCircle(Point p) throws ShapeException {
+		Shape2d s = new Circle(p);
+		model.add(s);
 	}
 	
-	private void addSquare() {
-		
+	private void addSquare(Point p) throws ShapeException {
+		Shape2d s = new Square(p);
+		model.add(s);
 	}
 
 	@Override
@@ -56,11 +58,9 @@ public class Controller implements ActionListener, MouseListener {
 		try {
 			if(e.getButton() == MouseEvent.BUTTON1) {
 				// left button
-				Shape2d s = new Circle(e.getPoint());
-				model.add(s);
-			} else if(e.getButton() == MouseEvent.BUTTON2) {
-				Shape2d s = new Square(e.getPoint());
-				model.add(s);
+				addCircle(e.getPoint());
+			} else if(e.getButton() == MouseEvent.BUTTON3) {
+				addSquare(e.getPoint());
 			}
 		} catch(ShapeException ex) {
 			ex.printStackTrace();
