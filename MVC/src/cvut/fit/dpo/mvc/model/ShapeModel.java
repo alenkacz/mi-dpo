@@ -25,4 +25,10 @@ public class ShapeModel extends Observable {
 	public void update(Shape2d s) {
 		
 	}
+	
+	public void clearAll() {
+		shapes = new Hashtable<Integer, Shape2d>();
+		setChanged();
+		notifyObservers();
+	}
 }

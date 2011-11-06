@@ -36,6 +36,9 @@ public class GraphicalView extends View implements Observer {
 		} else if(arg instanceof Square) {
 			Square r = (Square) arg;
 			getGraphics().drawRect(r.getPoint().x, r.getPoint().y, r.getX(), r.getY());
+		} else if(arg == null) {
+			// clear all action
+			getGraphics().clearRect(0, 0, getWidth(), getHeight());
 		}
 	}
 

@@ -18,6 +18,7 @@ import cvut.fit.dpo.mvc.view.TableView;
 public class Controller implements ActionListener, MouseListener {
 
 	public static final String ADD_CIRCLE_COMMAND = "addCircle";
+	public static final String CLEAR_COMMAND = "clearAll";
 	
 	private ShapeModel model;
 	private GraphicalView gView;
@@ -38,8 +39,8 @@ public class Controller implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if(command.equals(ADD_CIRCLE_COMMAND)) {
-			//addCircle();
+		if(command.equals(CLEAR_COMMAND)) {
+			clearAllAction();
 		}
 	}
 	
@@ -51,6 +52,10 @@ public class Controller implements ActionListener, MouseListener {
 	private void addSquare(Point p) throws ShapeException {
 		Shape2d s = new Square(p);
 		model.add(s);
+	}
+	
+	private void clearAllAction() {
+		model.clearAll();
 	}
 
 	@Override
