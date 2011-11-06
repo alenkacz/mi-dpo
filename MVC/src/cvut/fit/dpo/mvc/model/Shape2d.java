@@ -1,12 +1,22 @@
 package cvut.fit.dpo.mvc.model;
 
+import java.awt.Point;
+
 import cvut.fit.dpo.mvc.exception.ShapeException;
 
 public class Shape2d {
+	private static final int DEFAULT_SIZE = 10;
+	
 	private int id;
 	private int x;
 	private int y;
 	private Point point;
+	
+	public Shape2d(Point p) throws ShapeException {
+		this.point = p;
+		setX(DEFAULT_SIZE);
+		setY(DEFAULT_SIZE);
+	}
 	
 	public Shape2d(Point p, int x, int y) throws ShapeException {
 		setX(x);
