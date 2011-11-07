@@ -7,15 +7,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import cvut.fit.dpo.mvc.exception.ShapeException;
 import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.ShapeModel;
 import cvut.fit.dpo.mvc.model.Square;
 import cvut.fit.dpo.mvc.view.GraphicalView;
+import cvut.fit.dpo.mvc.view.ShapeTableModel;
 import cvut.fit.dpo.mvc.view.TableView;
 
-public class Controller implements ActionListener, MouseListener {
+public class Controller implements ActionListener, MouseListener, TableModelListener {
 
 	public static final String ADD_CIRCLE_COMMAND = "addCircle";
 	public static final String CLEAR_COMMAND = "clearAll";
@@ -70,6 +74,49 @@ public class Controller implements ActionListener, MouseListener {
 		} catch(ShapeException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void tableChanged(TableModelEvent e) {
+        int firstRow = e.getFirstRow();
+        int lastRow = e.getLastRow();
+        int mColIndex = e.getColumn();
+        ShapeTableModel source = (ShapeTableModel) e.getSource();
+
+        switch (e.getType()) {
+          case TableModelEvent.INSERT:
+            // The inserted rows are in the range [firstRow, lastRow]
+            for (int r=firstRow; r<=lastRow; r++) {
+                // Row r was inserted
+            }
+            break;
+          case TableModelEvent.UPDATE:
+            if (firstRow == TableModelEvent.HEADER_ROW) {
+                if (mColIndex == TableModelEvent.ALL_COLUMNS) {
+                    // A column was added
+                } else {
+                    // Column mColIndex in header changed
+                }
+            } else {
+                // The rows in the range [firstRow, lastRow] changed
+                for (int r=firstRow; r<=lastRow; r++) {
+                    // Row r was changed
+
+                    if (mColIndex == TableModelEvent.ALL_COLUMNS) {
+                        // All columns in the range of rows have changed
+                    } else {
+                        // Column mColIndex changed
+                    }
+                }
+            }
+            break;
+          case TableModelEvent.DELETE:
+            // The rows in the range [firstRow, lastRow] changed
+            for (int r=firstRow; r<=lastRow; r++) {
+                // Row r was deleted
+            }
+            break;
+        }
 	}
 
 	@Override

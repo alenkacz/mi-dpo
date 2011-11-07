@@ -76,6 +76,8 @@ public class TableView extends View implements Observer{
 	public void initActionListeners(Controller c) {
 		clearButton.setActionCommand(Controller.CLEAR_COMMAND);
 		clearButton.addActionListener(c);
+		squareTableModel.addTableModelListener(c);
+		circleTableModel.addTableModelListener(c);
 	}
 
 	@Override
