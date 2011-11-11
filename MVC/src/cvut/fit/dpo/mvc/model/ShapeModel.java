@@ -23,7 +23,12 @@ public class ShapeModel extends Observable {
 	}
 	
 	public void update(Shape2d s) {
-		
+		Shape2d shape = shapes.get(s.getId());
+		if(shape != null) {
+			shapes.put(s.getId(), s);
+			setChanged();
+			notifyObservers(shapes);
+		}
 	}
 	
 	public void clearAll() {

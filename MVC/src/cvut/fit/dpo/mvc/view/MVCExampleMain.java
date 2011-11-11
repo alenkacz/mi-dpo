@@ -19,6 +19,8 @@ public class MVCExampleMain extends JFrame {
 	TableView tView;
 	
 	public MVCExampleMain() {
+		setTitle("MI-DPO MVC - Alena Varkockova");
+		
 		model = new ShapeModel();
 		gView = new GraphicalView();
 		tView = new TableView();	

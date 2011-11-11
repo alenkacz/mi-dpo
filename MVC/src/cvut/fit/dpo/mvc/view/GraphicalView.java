@@ -3,6 +3,7 @@ package cvut.fit.dpo.mvc.view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,6 +13,7 @@ import javax.swing.JScrollPane;
 
 import cvut.fit.dpo.mvc.controller.Controller;
 import cvut.fit.dpo.mvc.model.Circle;
+import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.Square;
 
 public class GraphicalView extends View implements Observer {
@@ -27,24 +29,41 @@ public class GraphicalView extends View implements Observer {
 	public void initActionListeners(Controller c) {
 		addMouseListener(c);
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		if(arg instanceof Circle) {
-			Circle c = (Circle) arg;
+	
+	public void drawShape(Shape2d shape) {
+		if(shape instanceof Circle) {
+			Circle c = (Circle) shape;
 			getGraphics().drawOval(c.getPoint().x, c.getPoint().y, c.getX(), c.getY());
-		} else if(arg instanceof Square) {
-			Square r = (Square) arg;
+		} else if(shape instanceof Square) {
+			Square r = (Square) shape;
 			getGraphics().drawRect(r.getPoint().x, r.getPoint().y, r.getX(), r.getY());
-		} else if(arg == null) {
-			// clear all action
-			getGraphics().clearRect(0, 0, getWidth(), getHeight());
 		}
 	}
 
 	@Override
+	public void update(Observable o, Object arg) {
+		if(arg instanceof Shape2d) {
+			drawShape((Shape2d)arg);
+		} else if(arg instanceof List) {
+			// draw all
+			clear();
+			List<Shape2d> model = (List<Shape2d>) arg;
+			for(Shape2d shape : model) {
+				drawShape(shape);
+			}
+		} else if(arg == null) {
+			// clear all action
+			clear();
+		}
+	}
+	
+	private void clear() {
+		getGraphics().clearRect(0, 0, getWidth(), getHeight());
+	}
+
+	@Override
 	public JPanel getView() {
-		setPreferredSize(new Dimension(100,100));
+		setPreferredSize(new Dimension(300,150));
 		return this;
 	}
 }

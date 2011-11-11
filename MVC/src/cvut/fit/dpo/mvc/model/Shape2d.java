@@ -4,10 +4,10 @@ import java.awt.Point;
 import java.util.Random;
 
 import cvut.fit.dpo.mvc.exception.ShapeException;
+import cvut.fit.dpo.mvc.util.IdGenerator;
 
 public class Shape2d {
 	private static final int DEFAULT_SIZE = 10;
-	private static Random generator = new Random( 19500427 );
 	
 	private int id;
 	private int x;
@@ -27,9 +27,16 @@ public class Shape2d {
 		setY(y);
 		this.point = p;
 	}
+	
+	public Shape2d(int id, Point p, int x) throws ShapeException {
+		this.id = id;
+		setX(x);
+		setY(x);
+		this.point = p;
+	}
 
 	private int generateId() {
-		return generator.nextInt();
+		return IdGenerator.nextId();
 	}
 	
 	public int getId() {

@@ -48,6 +48,10 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 		}
 	}
 	
+	private void addShape(Shape2d s) {
+		model.add(s);
+	}
+	
 	private void addCircle(Point p) throws ShapeException {
 		Shape2d s = new Circle(p);
 		model.add(s);
@@ -56,6 +60,10 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 	private void addSquare(Point p) throws ShapeException {
 		Shape2d s = new Square(p);
 		model.add(s);
+	}
+	
+	private void updateShape(Shape2d s) {
+		model.update(s);
 	}
 	
 	private void clearAllAction() {
@@ -80,18 +88,27 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 	public void tableChanged(TableModelEvent e) {
         int firstRow = e.getFirstRow();
         int lastRow = e.getLastRow();
-        int mColIndex = e.getColumn();
         ShapeTableModel source = (ShapeTableModel) e.getSource();
 
         switch (e.getType()) {
           case TableModelEvent.INSERT:
-            // The inserted rows are in the range [firstRow, lastRow]
             for (int r=firstRow; r<=lastRow; r++) {
-                // Row r was inserted
+            	try {
+            		addShape(source.getShape(r));
+            	} catch(ShapeException ex) {
+            		ex.printStackTrace();
+            	}
             }
             break;
           case TableModelEvent.UPDATE:
-            if (firstRow == TableModelEvent.HEADER_ROW) {
+        	  for (int r=firstRow; r<=lastRow; r++) {
+        		  try {
+        			  updateShape(source.getShape(r));
+        		  } catch(ShapeException ex) {
+        			  ex.printStackTrace();
+        		  }
+              }
+            /*if (firstRow == TableModelEvent.HEADER_ROW) {
                 if (mColIndex == TableModelEvent.ALL_COLUMNS) {
                     // A column was added
                 } else {
@@ -99,7 +116,7 @@ public class Controller implements ActionListener, MouseListener, TableModelList
                 }
             } else {
                 // The rows in the range [firstRow, lastRow] changed
-                for (int r=firstRow; r<=lastRow; r++) {
+            	for (int r=firstRow; r<=lastRow; r++) {
                     // Row r was changed
 
                     if (mColIndex == TableModelEvent.ALL_COLUMNS) {
@@ -108,7 +125,7 @@ public class Controller implements ActionListener, MouseListener, TableModelList
                         // Column mColIndex changed
                     }
                 }
-            }
+            }*/
             break;
           case TableModelEvent.DELETE:
             // The rows in the range [firstRow, lastRow] changed
