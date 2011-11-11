@@ -51,6 +51,7 @@ public class GraphicalView extends View implements Observer {
 			for(Shape2d shape : model) {
 				drawShape(shape);
 			}
+			invalidate();
 		} else if(arg == null) {
 			// clear all action
 			clear();

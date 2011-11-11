@@ -20,6 +20,12 @@ public class ShapeTableModel extends DefaultTableModel {
 		return true;
 	}
 	
+	public void clearAll() {
+		for(int i = 0; i < getRowCount(); i++) {
+			removeRow(i);
+		}
+	}
+	
 	public Shape2d getShape(int r) throws ShapeException {
 		int id = Integer.parseInt((String)getValueAt(r, 0));
 		int x = Integer.parseInt((String)getValueAt(r, 1));

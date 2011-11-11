@@ -81,7 +81,8 @@ public class TableView extends View implements Observer{
 	}
 	
 	private void clear() {
-		
+		squareTableModel.clearAll();
+		circleTableModel.clearAll();
 	}
 	
 	private void addShape(Shape2d shape) {
