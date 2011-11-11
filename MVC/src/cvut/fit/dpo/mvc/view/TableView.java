@@ -85,7 +85,11 @@ public class TableView extends View implements Observer{
 	}
 	
 	private void addShape(Shape2d shape) {
-		
+		if(shape instanceof Circle) {
+			squareTableModel.addRow(shapeAdapter.getTableData(shape));
+		} else {
+			circleTableModel.addRow(shapeAdapter.getTableData(shape));
+		}
 	}
 
 	@Override

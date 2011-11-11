@@ -91,15 +91,6 @@ public class Controller implements ActionListener, MouseListener, TableModelList
         ShapeTableModel source = (ShapeTableModel) e.getSource();
 
         switch (e.getType()) {
-          case TableModelEvent.INSERT:
-            for (int r=firstRow; r<=lastRow; r++) {
-            	try {
-            		addShape(source.getShape(r));
-            	} catch(ShapeException ex) {
-            		ex.printStackTrace();
-            	}
-            }
-            break;
           case TableModelEvent.UPDATE:
         	  for (int r=firstRow; r<=lastRow; r++) {
         		  try {
