@@ -1,4 +1,4 @@
-package cvut.fit.dpo.mvc.view;
+package cvut.fit.dpo.mvc.view.table;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,6 +18,7 @@ import cvut.fit.dpo.mvc.controller.Controller;
 import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.ShapeModel;
+import cvut.fit.dpo.mvc.view.View;
 
 public class TableView extends View implements Observer{
 	
@@ -48,8 +49,8 @@ public class TableView extends View implements Observer{
 		
 		JTable table = new JTable();
 		JScrollPane scroll = new JScrollPane(table);
-		table.setPreferredSize(new Dimension(250,150));
-		squareTableModel = new ShapeTableModel();
+		scroll.setPreferredSize(new Dimension(250,150));
+		squareTableModel = new CircleTableModel();
 		squareTableModel.setColumnIdentifiers(tableHeaderSquare);
 		table.setModel(squareTableModel);
 		
@@ -63,8 +64,8 @@ public class TableView extends View implements Observer{
 		
 		JTable table = new JTable();
 		JScrollPane scroll = new JScrollPane(table);
-		table.setPreferredSize(new Dimension(250,150));
-		circleTableModel = new ShapeTableModel();
+		scroll.setPreferredSize(new Dimension(250,150));
+		circleTableModel = new SquareTableModel();
 		circleTableModel.setColumnIdentifiers(tableHeaderCircle);
 		table.setModel(circleTableModel);
 		

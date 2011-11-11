@@ -3,6 +3,7 @@ package cvut.fit.dpo.mvc.view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -31,6 +32,7 @@ public class GraphicalView extends View implements Observer {
 	}
 	
 	public void drawShape(Shape2d shape) {
+		
 		if(shape instanceof Circle) {
 			Circle c = (Circle) shape;
 			getGraphics().drawOval(c.getPoint().x, c.getPoint().y, c.getX(), c.getY());
@@ -44,14 +46,13 @@ public class GraphicalView extends View implements Observer {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof Shape2d) {
 			drawShape((Shape2d)arg);
-		} else if(arg instanceof List) {
+		} else if(arg instanceof Object[]) {
 			// draw all
 			clear();
-			List<Shape2d> model = (List<Shape2d>) arg;
-			for(Shape2d shape : model) {
-				drawShape(shape);
+			Object[] model = (Object[]) arg;
+			for(int i = 0; i < model.length; i++) {
+				drawShape((Shape2d)model[i]);
 			}
-			invalidate();
 		} else if(arg == null) {
 			// clear all action
 			clear();
@@ -65,6 +66,7 @@ public class GraphicalView extends View implements Observer {
 	@Override
 	public JPanel getView() {
 		setPreferredSize(new Dimension(300,150));
+		setVisible(true);
 		return this;
 	}
 }

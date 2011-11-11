@@ -16,8 +16,8 @@ import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.ShapeModel;
 import cvut.fit.dpo.mvc.model.Square;
 import cvut.fit.dpo.mvc.view.GraphicalView;
-import cvut.fit.dpo.mvc.view.ShapeTableModel;
-import cvut.fit.dpo.mvc.view.TableView;
+import cvut.fit.dpo.mvc.view.table.ShapeTableModel;
+import cvut.fit.dpo.mvc.view.table.TableView;
 
 public class Controller implements ActionListener, MouseListener, TableModelListener {
 
@@ -46,10 +46,6 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 		if(command.equals(CLEAR_COMMAND)) {
 			clearAllAction();
 		}
-	}
-	
-	private void addShape(Shape2d s) {
-		model.add(s);
 	}
 	
 	private void addCircle(Point p) throws ShapeException {
@@ -99,30 +95,6 @@ public class Controller implements ActionListener, MouseListener, TableModelList
         			  ex.printStackTrace();
         		  }
               }
-            /*if (firstRow == TableModelEvent.HEADER_ROW) {
-                if (mColIndex == TableModelEvent.ALL_COLUMNS) {
-                    // A column was added
-                } else {
-                    // Column mColIndex in header changed
-                }
-            } else {
-                // The rows in the range [firstRow, lastRow] changed
-            	for (int r=firstRow; r<=lastRow; r++) {
-                    // Row r was changed
-
-                    if (mColIndex == TableModelEvent.ALL_COLUMNS) {
-                        // All columns in the range of rows have changed
-                    } else {
-                        // Column mColIndex changed
-                    }
-                }
-            }*/
-            break;
-          case TableModelEvent.DELETE:
-            // The rows in the range [firstRow, lastRow] changed
-            for (int r=firstRow; r<=lastRow; r++) {
-                // Row r was deleted
-            }
             break;
         }
 	}

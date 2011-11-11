@@ -2,6 +2,7 @@ package cvut.fit.dpo.mvc.model;
 
 import java.awt.Shape;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -27,7 +28,7 @@ public class ShapeModel extends Observable {
 		if(shape != null) {
 			shapes.put(s.getId(), s);
 			setChanged();
-			notifyObservers(shapes);
+			notifyObservers(shapes.values().toArray());
 		}
 	}
 	

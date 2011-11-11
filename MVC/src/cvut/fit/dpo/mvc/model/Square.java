@@ -14,4 +14,7 @@ public class Square extends Shape2d {
 		super(p, x, x);
 	}
 
+	public Square(int id, Point p, int x) throws ShapeException {
+		super(id, p, x);
+	}
 }

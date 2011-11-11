@@ -11,6 +11,8 @@ import cvut.fit.dpo.mvc.controller.Controller;
 import cvut.fit.dpo.mvc.exception.ShapeException;
 import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.ShapeModel;
+import cvut.fit.dpo.mvc.model.Square;
+import cvut.fit.dpo.mvc.view.table.TableView;
 
 public class MVCExampleMain extends JFrame {
 	
@@ -26,13 +28,11 @@ public class MVCExampleMain extends JFrame {
 		tView = new TableView();	
 		initGUI();
 		Controller c = new Controller(model, gView, tView);
-		
-		addInitData();
 	}
 	
 	public void addInitData() {
 		try {
-			model.add(new Circle(new Point(10,10),5));
+			model.add(new Square(new Point(50,50),15));
 		} catch(ShapeException e) {
 			e.printStackTrace();
 		}

@@ -13,5 +13,9 @@ public class Circle extends Shape2d {
 	public Circle(Point p, int x) throws ShapeException {
 		super(p, x, x);
 	}
+	
+	public Circle(int id, Point p, int x) throws ShapeException {
+		super(id, p, x);
+	}
 
 }

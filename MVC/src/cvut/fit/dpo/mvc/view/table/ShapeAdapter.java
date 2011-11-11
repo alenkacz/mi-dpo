@@ -1,4 +1,4 @@
-package cvut.fit.dpo.mvc.view;
+package cvut.fit.dpo.mvc.view.table;
 
 import cvut.fit.dpo.mvc.model.Shape2d;
 
