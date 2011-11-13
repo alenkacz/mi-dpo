@@ -14,6 +14,12 @@ import cvut.fit.dpo.mvc.model.ShapeModel;
 import cvut.fit.dpo.mvc.model.Square;
 import cvut.fit.dpo.mvc.view.table.TableView;
 
+/**
+ * Main program - initializes the whole application
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class MVCExampleMain extends JFrame {
 	
 	ShapeModel model;
@@ -24,8 +30,8 @@ public class MVCExampleMain extends JFrame {
 		setTitle("MI-DPO MVC - Alena Varkockova");
 		
 		model = new ShapeModel();
-		gView = new GraphicalView();
-		tView = new TableView();	
+		gView = new GraphicalView(model);
+		tView = new TableView(model);	
 		initGUI();
 		Controller c = new Controller(model, gView, tView);
 	}

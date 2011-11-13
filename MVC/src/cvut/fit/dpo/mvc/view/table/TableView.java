@@ -20,6 +20,12 @@ import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.ShapeModel;
 import cvut.fit.dpo.mvc.view.View;
 
+/**
+ * View
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class TableView extends View implements Observer{
 	
 	private static final String[] tableHeaderSquare = new String[]{"id", "x", "y", "side"};
@@ -29,6 +35,10 @@ public class TableView extends View implements Observer{
 	ShapeTableModel squareTableModel;
 	ShapeTableModel circleTableModel;
 	ShapeAdapter shapeAdapter = new ShapeAdapter();
+	
+	public TableView(ShapeModel model) {
+		super(model);
+	}
 	
 	@Override
 	public JPanel getView() {

@@ -8,6 +8,12 @@ import javax.swing.table.DefaultTableModel;
 import cvut.fit.dpo.mvc.exception.ShapeException;
 import cvut.fit.dpo.mvc.model.Shape2d;
 
+/**
+ * Table model for displaying Shape data in JTable
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public abstract class ShapeTableModel extends DefaultTableModel {
 	
 	@Override

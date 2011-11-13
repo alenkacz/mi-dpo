@@ -15,11 +15,19 @@ import javax.swing.JScrollPane;
 import cvut.fit.dpo.mvc.controller.Controller;
 import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.Shape2d;
+import cvut.fit.dpo.mvc.model.ShapeModel;
 import cvut.fit.dpo.mvc.model.Square;
 
+/**
+ * View
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class GraphicalView extends View implements Observer {
 	
-	public GraphicalView() {
+	public GraphicalView(ShapeModel model) {
+		super(model);
 		initComponents();
 	}
 	

@@ -6,6 +6,12 @@ import cvut.fit.dpo.mvc.exception.ShapeException;
 import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.Shape2d;
 
+/**
+ * Table model for displaying circle data in JTable
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class CircleTableModel extends ShapeTableModel {
 	
 	public Circle getShape(int r) throws ShapeException {

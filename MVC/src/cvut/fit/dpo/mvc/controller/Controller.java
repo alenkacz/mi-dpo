@@ -19,6 +19,11 @@ import cvut.fit.dpo.mvc.view.GraphicalView;
 import cvut.fit.dpo.mvc.view.table.ShapeTableModel;
 import cvut.fit.dpo.mvc.view.table.TableView;
 
+/**
+ * Controller
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class Controller implements ActionListener, MouseListener, TableModelListener {
 
 	public static final String ADD_CIRCLE_COMMAND = "addCircle";
@@ -48,6 +53,10 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 		}
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////// Action methods ////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
 	private void addCircle(Point p) throws ShapeException {
 		Shape2d s = new Circle(p);
 		model.add(s);
@@ -65,6 +74,10 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 	private void clearAllAction() {
 		model.clearAll();
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////// UI Event Handlers ////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -101,22 +114,22 @@ public class Controller implements ActionListener, MouseListener, TableModelList
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// nothing
+		// do nothing
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// nothing
+		// do nothing
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// nothing
+		// do nothing
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// nothing
+		// do nothing
 	}
 	
 }

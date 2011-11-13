@@ -7,6 +7,12 @@ import cvut.fit.dpo.mvc.model.Circle;
 import cvut.fit.dpo.mvc.model.Shape2d;
 import cvut.fit.dpo.mvc.model.Square;
 
+/**
+ * Table model for displaying square data in JTable
+ * 
+ * @author Alena Varkockova (varkockova.a@gmail.com)
+ *
+ */
 public class SquareTableModel extends ShapeTableModel {
 
 	@Override
