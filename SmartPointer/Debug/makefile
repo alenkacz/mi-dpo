@@ -46,7 +46,7 @@ all: mi-dpo_cv1
 mi-dpo_cv1: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o"mi-dpo_cv1" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "mi-dpo_cv1" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
