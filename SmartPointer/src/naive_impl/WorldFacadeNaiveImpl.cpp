@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "../sp_impl/Wrapper.h"
+#include "../Agent.h"
 
 using namespace std;
 
@@ -51,9 +52,9 @@ void WorldFacadeNaiveImpl::createAgent(string aName, string lName)
 	locations[lName]->agentEnters(a);
 }
 
-AgentPointer WorldFacadeNaiveImpl::getAgentWithId(string id)
+Wrapper<Agent> WorldFacadeNaiveImpl::getAgentWithId(string id)
 {
-	return (AgentPointer)findAgentByName(id);
+	return (Wrapper<Agent>)findAgentByName(id);
 
 }
 
@@ -123,11 +124,11 @@ StringList WorldFacadeNaiveImpl::getAgentsInWorld()
 	for (LocationMap::const_iterator it =locations.begin(); it != locations.end(); it++)
 	{
 		LocationNaive* location = it->second;
-		list<Agent*> agentsInside = location->agentsInside();
+		list<Wrapper<Agent> > agentsInside = location->agentsInside();
 
-		for (list<Agent*>::const_iterator it2 = agentsInside.begin(); it2 != agentsInside.end(); it2++)
+		for (list<Wrapper<Agent> >::const_iterator it2 = agentsInside.begin(); it2 != agentsInside.end(); it2++)
 		{
-			Agent* agent = *it2;
+			Wrapper<Agent> agent = *it2;
 			l.push_back(agent->getName());
 		}
 	}

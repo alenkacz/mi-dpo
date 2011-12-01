@@ -9,6 +9,8 @@
 #define WORLDFACADEIMPL_H_
 #include "../WorldFacade.h"
 #include "LocationNaive.h"
+#include "../sp_impl/Wrapper.h"
+#include "../Agent.h"
 
 using namespace std;
 
@@ -29,7 +31,7 @@ public:
 	virtual StringList getAgentsInWorld();
 
 	virtual StringList getAgentsInLocation(string lName);
-	virtual AgentPointer getAgentWithId(string id);
+	virtual Wrapper<Agent> getAgentWithId(string id);
 
 private:
 	LocationMap locations;
