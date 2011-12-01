@@ -8,6 +8,8 @@
 #include "WorldFacadeNaiveImpl.h"
 #include <iostream>
 
+#include "../sp_impl/Wrapper.h"
+
 using namespace std;
 
 
@@ -44,7 +46,8 @@ void WorldFacadeNaiveImpl::deleteLocation(string lName)
 
 void WorldFacadeNaiveImpl::createAgent(string aName, string lName)
 {
-	Agent* a = new Agent(getLogger(), aName);
+	Wrapper<Agent>* a =
+			new Wrapper(new Agent(getLogger(), aName));
 	locations[lName]->agentEnters(a);
 }
 

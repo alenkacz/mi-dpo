@@ -16,11 +16,11 @@ LocationNaive::~LocationNaive() {
     }
 }
 
-void LocationNaive::agentEnters(Agent* a) {
+void LocationNaive::agentEnters(Wrapper<Agent>* a) {
 	agents.push_back(a);
 }
 
-void LocationNaive::agentLeaves(Agent* a) {
+void LocationNaive::agentLeaves(Wrapper<Agent>* a) {
 	agents.remove(a);
 }
 

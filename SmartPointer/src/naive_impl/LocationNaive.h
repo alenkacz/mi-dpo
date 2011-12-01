@@ -7,12 +7,12 @@
 
 #ifndef LOCATIONNAIVE_H_
 #define LOCATIONNAIVE_H_
-
 #include "../Location.h"
+#include "../sp_impl/Wrapper.h"
 
 using namespace std;
 
-typedef list<Agent*> AgentList;
+typedef list<Wrapper<Agent>*> AgentList;
 
 class LocationNaive: public Location {
 private:
@@ -22,9 +22,9 @@ public:
 	LocationNaive(EventLogger* logger, string name) : Location(logger, name) {};
 	virtual ~LocationNaive();
 
-	void agentEnters(Agent* a);
+	void agentEnters(Wrapper<Agent>* a);
 
-	void agentLeaves(Agent* a);
+	void agentLeaves(Wrapper<Agent>* a);
 
 	AgentList agentsInside();
 
