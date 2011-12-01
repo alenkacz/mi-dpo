@@ -12,7 +12,7 @@
 
 using namespace std;
 
-typedef list<Wrapper<Agent>*> AgentList;
+typedef list<Wrapper<Agent> > AgentList;
 
 class LocationNaive: public Location {
 private:
@@ -22,9 +22,9 @@ public:
 	LocationNaive(EventLogger* logger, string name) : Location(logger, name) {};
 	virtual ~LocationNaive();
 
-	void agentEnters(Wrapper<Agent>* a);
+	void agentEnters(Wrapper<Agent> a);
 
-	void agentLeaves(Wrapper<Agent>* a);
+	void agentLeaves(Wrapper<Agent> a);
 
 	AgentList agentsInside();
 

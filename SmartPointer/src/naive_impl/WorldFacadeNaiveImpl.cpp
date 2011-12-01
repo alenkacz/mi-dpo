@@ -46,8 +46,8 @@ void WorldFacadeNaiveImpl::deleteLocation(string lName)
 
 void WorldFacadeNaiveImpl::createAgent(string aName, string lName)
 {
-	Wrapper<Agent>* a =
-			new Wrapper(new Agent(getLogger(), aName));
+	Wrapper<Agent> a(new Agent(getLogger(), aName));
+
 	locations[lName]->agentEnters(a);
 }
 
@@ -69,7 +69,7 @@ AgentPointer WorldFacadeNaiveImpl::getAgentWithId(string id)
 //}
 
 
-Agent* WorldFacadeNaiveImpl::findAgentByName(string name)
+Wrapper<Agent> WorldFacadeNaiveImpl::findAgentByName(string name)
 {
 	for (LocationMap::const_iterator it = locations.begin(); it != locations.end(); it++)
 	{
@@ -79,7 +79,7 @@ Agent* WorldFacadeNaiveImpl::findAgentByName(string name)
 		AgentList agentsInside = location->agentsInside();
 		for (AgentList::const_iterator it2 = agentsInside.begin(); it2 != agentsInside.end(); it++)
 		{
-			Agent* agent = *it2;
+			Wrapper<Agent> agent = *it2;
 			//cout << "FOUND AGENT: " << *agent << endl;
 			if (name == agent->getName())
 			{

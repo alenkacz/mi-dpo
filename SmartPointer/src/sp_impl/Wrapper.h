@@ -18,7 +18,7 @@ public:
 	T* operator->();
 	const T* operator->() const;
 
-	//friend bool operator==(const Wrapper<T>& other, const Wrapper<T>& other2);
+	friend bool operator==(const Wrapper<T>& other, const Wrapper<T>& other2);
 
 	bool Null() const {return _counted == 0;}
 	void SetNull() { UnBind(); }

@@ -34,7 +34,7 @@ public:
 private:
 	LocationMap locations;
     void freeUpLocations();
-    Agent* findAgentByName(string name);
+    Wrapper<Agent> findAgentByName(string name);
 };
 
 

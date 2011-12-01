@@ -2,7 +2,7 @@
 #include "Wrapper.h"
 
 template <class T>
-Wrapper<T>::Wrapper() : _counted = 0 {}
+Wrapper<T>::Wrapper() : _counted(0) {}
 
 template <class T>
 Wrapper<T>::Wrapper(T* ptr)
@@ -18,7 +18,7 @@ Wrapper<T>::~Wrapper()
 }
 
 template <class T>
-Wrapper<T>::UnBind()
+void Wrapper<T>::UnBind()
 {
 	if(!Null() && _counted->FreeRef() == 0) {
 		delete _counted;
@@ -47,4 +47,12 @@ T* Wrapper<T>::operator->()
 	 }
 
 	 return _counted->_pointer;
+}
+
+template<class T>
+bool operator==(const Wrapper<T>& other,
+                        const Wrapper<T>& other2)
+{
+        return other.m_pCounted->my_pT
+                        == other2.m_pCounted->my_pT;
 }

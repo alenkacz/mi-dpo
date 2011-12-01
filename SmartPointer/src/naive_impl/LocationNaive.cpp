@@ -12,15 +12,15 @@ using namespace std;
 LocationNaive::~LocationNaive() {
 	for(AgentList::const_iterator it = agents.begin();it != agents.end();it++)
     {
-    	delete *it;
+    	delete &it;
     }
 }
 
-void LocationNaive::agentEnters(Wrapper<Agent>* a) {
+void LocationNaive::agentEnters(Wrapper<Agent> a) {
 	agents.push_back(a);
 }
 
-void LocationNaive::agentLeaves(Wrapper<Agent>* a) {
+void LocationNaive::agentLeaves(Wrapper<Agent> a) {
 	agents.remove(a);
 }
 
