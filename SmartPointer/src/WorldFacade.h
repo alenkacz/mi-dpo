@@ -6,6 +6,9 @@
 #include "logging/EventLogger.h"
 #include "logging/Loggable.h"
 
+#include "sp_impl/Wrapper.h"
+#include "Agent.h"
+
 using namespace std;
 
 
@@ -26,7 +29,7 @@ public:
 	virtual StringList getAgentsInWorld() = 0;
 
 	virtual StringList getAgentsInLocation(string lName) = 0;
-	virtual AgentPointer getAgentWithId(string id) = 0;
+	virtual Wrapper<Agent> getAgentWithId(string id) = 0;
 };
 
 #endif /* WORLDFACADE_H_ */

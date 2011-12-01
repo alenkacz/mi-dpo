@@ -9,12 +9,15 @@
 #include <list>
 #include <vector>
 
+#include "sp_impl/Wrapper.h"
+#include "Agent.h"
+
 using namespace std;
 
 /**
  * This may be changed! And probably will be :)
  */
-typedef Agent* AgentPointer;
+typedef Wrapper<Agent> AgentPointer;
 
 string serializeStringList(StringList list);
 

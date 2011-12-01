@@ -5,6 +5,8 @@
 
 using namespace std;
 
+template <class T> class Counted;
+
 template <class T>
 class Wrapper {
 public:
