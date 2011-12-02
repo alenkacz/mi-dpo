@@ -13,9 +13,9 @@ public:
 	Wrapper();
 	Wrapper(T* ptr);
 	~Wrapper();
-	//Wrapper(const Wrapper<T>& other);
+	Wrapper(const Wrapper<T>& other);
 
-	//Wrapper<T>& operator=(const Wrapper<T>& other);
+	Wrapper<T>& operator=(const Wrapper<T>& other);
 
 	T* operator->();
 	const T* operator->() const;
@@ -83,6 +83,24 @@ template<class T>
 bool Wrapper<T>::operator==(const Wrapper<T>& other)
 {
         return _counted->_pointer == other._counted->_pointer;
+}
+
+template<class T>
+Wrapper<T>::Wrapper(const Wrapper<T>& other)
+{
+        _counted = other._counted;
+        if (!Null())
+                _counted->GetRef();
+}
+
+template<class T>
+Wrapper<T>& Wrapper<T>::operator=(const Wrapper<T>& other)
+{
+        if (!other.Null())
+                other._counted->GetRef();
+        UnBind();
+        _counted = other._counted;
+        return *this;
 }
 
 #endif /* WRAPPER_H_ */

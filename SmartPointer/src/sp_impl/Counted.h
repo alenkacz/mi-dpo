@@ -33,7 +33,7 @@ private:
         unsigned GetRef()    { return ++_count; }
         unsigned FreeRef()
         {
-        	assert(_count != 0);
+        	assert(_count > 0);
         	return --_count;
         }
 };
