@@ -21,6 +21,7 @@ public:
 	const T* operator->() const;
 
 	bool operator==( const Wrapper<T>& other2);
+	bool operator!=(const Wrapper<T>& other);
 
 	bool Null() const {return _counted == 0;}
 	void SetNull() { UnBind(); }
@@ -83,6 +84,12 @@ template<class T>
 bool Wrapper<T>::operator==(const Wrapper<T>& other)
 {
         return _counted->_pointer == other._counted->_pointer;
+}
+
+template<class T>
+bool Wrapper<T>::operator!=(const Wrapper<T>& other)
+{
+        return !(_counted == other);
 }
 
 template<class T>
