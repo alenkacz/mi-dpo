@@ -22,7 +22,7 @@ private:
 
         Counted(T* ptr) : _count(0), _pointer(ptr)
         {
-        	ASSERT(ptr != 0);
+        	assert(ptr != 0);
         }
         ~Counted()
         {
